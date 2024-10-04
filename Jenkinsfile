@@ -1,28 +1,25 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven 3.8.1' // Replace with your Maven tool name
+    }
+
     stages {
         stage('Build') {
             steps {
-                script {
-                    // Run Maven build
-                    sh 'mvn clean package'
-                }
+                sh 'mvn clean package'
             }
         }
-        stage('Test') {
+
+        stage('Run') {
             steps {
                 script {
-                    // Run unit tests
-                    sh 'mvn test'
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                script {
-                    // Placeholder for deployment step
-                    echo 'Deploying application...'
+                    // Kill any existing running instance of the application (optional)
+                    sh 'pkill -f "java -jar target/sb-ecom-*.jar" || true'
+                    
+                    // Start the application
+                    sh 'nohup java -jar target/sb-ecom-*.jar &'
                 }
             }
         }
