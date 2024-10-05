@@ -1,14 +1,15 @@
 pipeline {
     agent any
 
+    // Add the 'tools' block here to specify the Maven version
     tools {
-        maven 'Maven 3.8.1' // Replace with your Maven tool name
+        maven 'Maven 3.8.1' // This should match the Maven installation name configured in Jenkins
     }
 
     stages {
         stage('Build') {
             steps {
-                echo 'Firing Clean build Maven command that also include test cases execution...'
+                echo 'Firing Clean build Maven command that also includes test case execution...'
                 sh 'mvn clean install'
             }
         }
