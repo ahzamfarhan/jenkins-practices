@@ -8,7 +8,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                sh echo 'Firing Clean build Maven command that also include test cases execution...'
+                sh 'mvn clean install'
             }
         }
 
