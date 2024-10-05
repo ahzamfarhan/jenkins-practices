@@ -12,7 +12,7 @@ pipeline {
             }
         }
 
-        stage('Run') {
+        /*stage('Run') {
             steps {
                 script {
                     // Kill any existing running instance of the application (optional)
@@ -22,6 +22,6 @@ pipeline {
                     sh 'nohup java -jar target/sb-ecom-*.jar &'
                 }
             }
-        }
+        }*/
     }
 }
